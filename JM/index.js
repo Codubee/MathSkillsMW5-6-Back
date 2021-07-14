@@ -26,10 +26,10 @@ app.get('/getAllPeople', (req, res) => {
     })
 });
 
-app.delete('/deletePerson/:id', (req, res) => {
-    axios.delete(`http://java-sample-api-2020.herokuapp.com/deletePerson/${req.params.id}`)
+app.delete('/deletePerson', (req, res) => {
+    axios.delete(`http://java-sample-api-2020.herokuapp.com/deletePerson?id=${req.query.id}`)
     .then(() => {
-        res.json({"Message": `Deleted Person ${req.params.id}`})
+        res.json({"Message": `Deleted Person ${req.query.id}`})
     })
     .catch(() => {
         res.status(500).json({"Message": "Error"});
