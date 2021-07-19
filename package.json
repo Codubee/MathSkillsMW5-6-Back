@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node index.js",
+    "server": "node SH/index.js",
     "client": "cd ../ && npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "engines": {
-        "node": "12.18.3"
+    "node": "12.18.3"
   },
   "license": "ISC",
   "dependencies": {
