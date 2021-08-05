@@ -13,6 +13,4 @@ app.get('/getMatches', (req, res) => {
     })
 });
 
-app.listen(3000, () => {
-    console.log('Server is running');
-});
+app.listen( process.env.PORT || 8080, () => console.log('Example app listening at http://localhost:8080'))
