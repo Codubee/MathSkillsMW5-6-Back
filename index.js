@@ -1,9 +1,4 @@
-/* 
- * This api route GETS a random math problem from the math problem api.
-*/
-
 const axios = require('axios');
-const { response } = require('express');
 const express = require('express');
 const app = express();
 app.use(express.json());
@@ -20,6 +15,16 @@ app.get('/getProblem', function(req, res) {
     })
 });
 
-app.listen(8080, function() {
-    console.log("listening")
-})
+
+app.get('/getMatches', (req, res) => {
+    axios.get(`https://codubee-projects-api.herokuapp.com/math/getMatches?userId=${req.query.userId}`)
+    .then((axiosResponse) => {
+        res.json(axiosResponse.data)
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+});
+
+
+app.listen( process.env.PORT || 8080, () => console.log('Example app listening at http://localhost:8080'))
