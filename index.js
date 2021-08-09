@@ -15,7 +15,6 @@ app.get('/getProblem', function(req, res) {
     })
 });
 
-
 app.get('/getMatches', (req, res) => {
     axios.get(`https://codubee-projects-api.herokuapp.com/math/getMatches?userId=${req.query.userId}`)
     .then((axiosResponse) => {
@@ -26,5 +25,14 @@ app.get('/getMatches', (req, res) => {
     })
 });
 
+app.get('/getWeather', (req, res) => {
+    axios.get('https://codubee-projects-api.herokuapp.com/getWeather')
+    .then((axiosResponse) => {
+        res.json(axiosResponse.data)
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+});
 
 app.listen( process.env.PORT || 8080, () => console.log('Example app listening at http://localhost:8080'))
