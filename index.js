@@ -10,7 +10,7 @@ app.use(express.json())
     1. Open Postman
     2. Select Post.
     3. Call it with localhost:8080/
-    4. After the '/' specify math/addProblem
+    4. Call the /addProblem route
     5. For POST request in Postman, go to the body tab, select JSON on the dropdown, then in the
     text area create a json object with the keys "userID" & "problem". Within "problem" specify a 
     object with {} add in the keys "problem", "answer", & "problemId"
