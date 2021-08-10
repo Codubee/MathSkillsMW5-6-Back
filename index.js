@@ -23,8 +23,8 @@ app.use(express.json())
     }
 */
 
-// Makes post request to /math/addProblem route
-app.post('/math/addProblem', (pmanReq,pmanRes)=>{
+// Makes post request to /addProblem route
+app.post('/addProblem', (pmanReq,pmanRes)=>{
     
     // Grab the posts body
     const bodyPost = pmanReq.body
