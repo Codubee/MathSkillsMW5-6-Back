@@ -29,8 +29,8 @@ app.post('/addProblem', (pmanReq,pmanRes)=>{
     // Grab the posts body
     const bodyPost = pmanReq.body
     // Make post request to our API
-    axios.post("https://codubee-projects-api.herokuapp.com/math/addProblem",
-    bodyPost).then(function(newResponse){
+    axios.post("https://codubee-projects-api.herokuapp.com/math/addProblem",bodyPost)
+    .then(function(newResponse){
         // Executes if request was successful
         console.log(newResponse)
         pmanRes.json({"message":"Posted"})
