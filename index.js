@@ -1,9 +1,7 @@
-
+const axios = require('axios');
 const express = require('express');
-const {default: axios} = require('axios');
 const app = express();
-
-app.use(express.json())
+app.use(express.json());
 
 /*
     Usage:
@@ -41,6 +39,36 @@ app.post('/addProblem', (pmanReq,pmanRes)=>{
     })
 })
 
-app.listen(process.env.PORT || 8080, function(){
-    console.log("Listening on port 8080.")
-})
+app.get('/getProblem', function(req, res) {
+    axios.get('https://codubee-projects-api.herokuapp.com/math/getProblem')
+    .then(function(response) {
+        console.log(response["data"])
+        res.json(response["data"])
+    })
+    .catch(function(error) {
+        console.log(error)
+        response.json({"message": "ERROR: REQUEST FAILED"})
+    })
+});
+
+app.get('/getMatches', (req, res) => {
+    axios.get(`https://codubee-projects-api.herokuapp.com/math/getMatches?userId=${req.query.userId}`)
+    .then((axiosResponse) => {
+        res.json(axiosResponse.data)
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+});
+
+app.get('/getWeather', (req, res) => {
+    axios.get('https://codubee-projects-api.herokuapp.com/getWeather')
+    .then((axiosResponse) => {
+        res.json(axiosResponse.data)
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+});
+
+app.listen( process.env.PORT || 8080, () => console.log('Example app listening at http://localhost:8080'))
