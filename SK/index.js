@@ -38,7 +38,7 @@ app.delete('/deletePerson', function(req, res){ // route which deletes person by
 app.post('/addPerson', function(req, res){ // route which adds a person to the API 
     const body = req.body;  
     console.log(body) // logs the body of the post request for debugging
-    axios.post("http://java-sample-api-2020.herokuapp.com/addPerson", bodyPost) // POST request attempted here
+    axios.post("http://java-sample-api-2020.herokuapp.com/addPerson", body) // POST request attempted here
     .then(function(newResponse){ // on success, the message is the response
         console.log(newResponse);
         res.json({"message":"SUCCESS: USER ADDED"})
