@@ -8,11 +8,6 @@ require('dotenv').config({ path: '../.env' });
 app.use(express.json());
 app.use(cors());
 
-const corsOptions = {
-    origin: 'https://www.yelp.com/developers/documentation/v3/event_search',
-    optionsSuccessStatus: 200
-}
-
 app.post('/addPerson', (req, res) => {
     const body = req.body;
    
