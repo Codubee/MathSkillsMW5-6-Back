@@ -104,6 +104,25 @@ app.get('/events', (req, res) => {
     })
 });
 
+app.get('/eventsDetails', (req, res) => {
+    let params = Object.keys(req.query).length === 0 ? '' : req.query;
+
+    axios.get(`https://api.yelp.com/v3/events/{id}`, {
+        headers: {
+            Authorization: `Bearer ${process.env.API_TOKEN}`
+        },
+        params: {
+            locale: params.locale ? params.locale : null,
+        }
+    })
+    .then((response) => {
+        res.json(response.data);
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+});
+
 app.listen(3000, () => {
     console.log('Server is running');
 });
