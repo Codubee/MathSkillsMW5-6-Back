@@ -50,17 +50,18 @@ app.get('/events', (req, res) => {
             Authorization: `Bearer ${process.env.API_TOKEN}`
         },
         params: {
-            location: params.location ? params.location : null,
-            limit: params.limit ? params.limit : null,
             locale: params.locale ? params.locale : null,
             offset: params.offset ? params.offset : null,
+            limit: params.limit ? params.limit : null,
             sort_by: params.sort_by ? params.sort_by : null,
             sort_on: params.sort_on ? params.sort_on : null,
             start_date: params.start_date ? params.start_date : null,
             end_date: params.end_date ? params.end_date : null,
             categories: params.categories ? params.categories : null,
             is_free: params.is_free ? params.is_free : null,
+            location: params.location ? params.location : null,
             latitude: params.latitude ? params.latitude : null,
+            longitude: params.longitude ? params.longitude : null,
             radius: params.radius ? params.radius : null,
             excluded_events: params.excluded_events ? params.excluded_events : null
         }
