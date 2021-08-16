@@ -52,6 +52,22 @@ app.delete('/deletePerson', function(req,res){
     })  
 })
 
+app.delete('/deleteProblem', function(req,res){
+    const user_id = req.query["userId"]
+    const problem_id = req.query["problemId"]
+    axios.delete("https://codubee-projects-api.herokuapp.com/math/deleteProblem?userId=${user_id}&problemId=${problem_id}")
+
+    .then(function(response){
+        console.log(response)
+        res.json({"Response":"Successfully deleted!"})
+    })  
+    .catch(function(error){
+        console.log(error)
+        res.json({"Response":"There has been an error deleting."})
+    })
+})
+
+
 //Start API listening on port 8080.
 app.listen(8080, function() {
     console.log("API is listening.");
