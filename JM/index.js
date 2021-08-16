@@ -42,8 +42,6 @@ app.delete('/deletePerson', (req, res) => {
 
 app.get('/events', (req, res) => {
     let params = Object.keys(req.query).length === 0 ? '' : req.query;
-    console.log(params);
-    console.log(req.query);
 
     axios.get(`https://api.yelp.com/v3/events`, {
         headers: {
