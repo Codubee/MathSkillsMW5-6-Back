@@ -40,6 +40,38 @@ app.delete('/deletePerson', (req, res) => {
     })
 });
 
+app.get('/businessSearch', (req, res) => {
+    let params = Object.keys(req.query).length === 0 ? '' : req.query;
+
+    axios.get(`https://api.yelp.com/v3/businesses/search`, {
+        headers: {
+            Authorization: `Bearer ${process.env.API_TOKEN}`
+        },
+        params: {
+            term: params.term ? params.term : null,
+            location: params.location ? params.location : null,
+            latitude: params.latitude ? params.latitude : null,
+            longitude: params.longitude ? params.longitude : null,
+            radius: params.radius ? params.radius : null,
+            categories: params.categories ? params.categories : null,
+            locale: params.locale ? params.locale : null,
+            limit: params.limit ? params.limit : null,
+            offset: params.offset ? params.offset : null,
+            sort_by: params.sort_by ? params.sort_by : null,
+            price: params.price ? params.price : null,
+            open_now: params.open_now ? params.open_now : null,
+            open_at: params.open_at ? params.open_at : null,
+            attributes: params.attributes ? params.attributes : null
+        }
+    })
+    .then((response) => {
+        res.json(response.data);
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+});
+
 app.get('/events', (req, res) => {
     let params = Object.keys(req.query).length === 0 ? '' : req.query;
 
@@ -70,7 +102,7 @@ app.get('/events', (req, res) => {
     .catch((err) => {
         res.json(err);
     })
-})
+});
 
 app.listen(3000, () => {
     console.log('Server is running');
