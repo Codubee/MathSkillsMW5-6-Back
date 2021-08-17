@@ -63,6 +63,17 @@ app.get('/getMatches', (req, res) => {
     })
 });
 
+
+app.delete('/deleteProblem', (req, res) => {
+    axios.delete(`https://codubee-projects-api.herokuapp.com/math/deleteProblem?userId=${req.query.userId}&problemId=${req.query.problemId}`)
+    .then((axiosResponse) => {
+        res.json(axiosResponse.data);
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+});
+
 app.get('/getWeather', (req, res) => {
     axios.get('https://codubee-projects-api.herokuapp.com/getWeather')
     .then((axiosResponse) => {
