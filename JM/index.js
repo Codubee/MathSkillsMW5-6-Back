@@ -104,10 +104,10 @@ app.get('/events', (req, res) => {
     })
 });
 
-app.get('/eventsDetails', (req, res) => {
+app.get('/eventDetails', (req, res) => {
     let params = Object.keys(req.query).length === 0 ? '' : req.query;
-
-    axios.get(`https://api.yelp.com/v3/events/{id}`, {
+    
+    axios.get(`https://api.yelp.com/v3/events/${params.id}`, {
         headers: {
             Authorization: `Bearer ${process.env.API_TOKEN}`
         },
